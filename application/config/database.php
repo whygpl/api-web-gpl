@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '192.100.38.63',
 	'username' => 'root',
 	'password' => 'k0s0ngGPL',
 	'database' => 'galenium_api_dev',

@@ -57,9 +57,9 @@
     date_default_timezone_set('Asia/Jakarta');
 	// SERVER_ADDR //HTTP_HOST
 	//if ($_SERVER['REMOTE_ADDR'] != '::1') {
-//		define('IPSERVER', 'http://'.$_SERVER['SERVER_ADDR'].'/assets/media/images/');
+//		define('IPSERVER', 'http://'.$_SERVER['SERVER_ADDR'].'/api-web-gpl/assets/media/images/');
 //	} else {
-		define('IPSERVER', 'http://'.$_SERVER['HTTP_HOST'].'/assets/media/images/');
+		define('IPSERVER', 'http://'.$_SERVER['HTTP_HOST'].'/api-web-gpl/assets/media/images/');
   //     }
 /*
  *---------------------------------------------------------------

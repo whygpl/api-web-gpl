@@ -102,15 +102,16 @@ class General extends My_Controller {
         //         $response_data = $this->form_validation->error_array();
         //         $this->REST_Return(422, 'Oops, something went wrong, Please try again latter.', $response_data);
         //     } else {
-				$model = "News";
+				//$model = "News";
 				/* Start Transaction */
-				$this->db->trans_start();
+				//$this->db->trans_start();
                 
                 // echo "<pre>";
                 // // var_dump($_FILES);
                 // var_dump($dt_post);
                 $this->load->library("PHPMailerAutoload");
                 $mail = $this->phpmailerautoload->load();
+
                 try {                       // TCP port to connect to
                     $mail->SMTPDebug = 0;                                 // Enable verbose debug output
                     $mail->isSMTP();   
@@ -195,19 +196,19 @@ class General extends My_Controller {
                     echo 'Message could not be sent.';
                     echo 'Mailer Error: ' . $mail->ErrorInfo;
                 }
-                // die();
-                // // var_dump($dt_post["title_${i}"]);
-                // echo "</pre>";
-				$this->db->trans_complete();
-				/* End Transaction */
-				if ($this->db->trans_status() === false) {
+        // die();
+        // // var_dump($dt_post["title_${i}"]);
+        // echo "</pre>";
+        //$this->db->trans_complete();
+        /* End Transaction */
+                if (!$mail->send()) {
 					$response_data = array(
-						'error'   => $this->db->trans_status()
+						'error'   => $mail->ErrorInfo
 					);
 					$this->REST_Return(422, 'Oops, something went wrong, Please try again latter.', $response_data);
 				} else {
 					$response_data = array(
-						'status'     => $mail->ErrorInfo
+						'status'     => 'Message has been sent'
 					);
 					$this->REST_Return(201, 'SUCCESS', $response_data);
 				}
