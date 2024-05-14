@@ -181,7 +181,17 @@ class Product extends My_Controller {
             $this->Category->set_variable('orderFields', $orderFields);
             $output = $this->Category->read();
             for ($i=0; $i < count($output); $i++) {
-                $output[$i]->image_url = ($output[$i]->image_url != null) ? IPSERVER.$output[$i]->image_url : NULL;
+				if($output[$i]->image_url != null){
+					if (isset($q_strings['id'])) {
+						$output[$i]->image_url = IPSERVER.$output[$i]->image_url;
+					} 
+					else {
+						$output[$i]->image_url = "<img src='".IPSERVER.$output[$i]->image_url."' />";
+					}
+				} 
+				else {
+					$output[$i]->image_url = NULL;
+				}                
             }
             $response_data = array();
             if ($output != [] && $id != 0) {
@@ -248,7 +258,20 @@ class Product extends My_Controller {
             for ($i=0; $i < count($output); $i++) {
                 $category = $this->Category->read($output[$i]->product_category_id,false)[0];
                 $output[$i]->product_category_name = $category->title;
-                $output[$i]->image_url = ($output[$i]->image_url != null) ? IPSERVER.$output[$i]->image_url : NULL;
+				
+				if($output[$i]->image_url != null){
+					if (isset($q_strings['id'])) {
+						$output[$i]->image_url = IPSERVER.$output[$i]->image_url;
+					} 
+					else {
+						$output[$i]->image_url = "<img src='".IPSERVER.$output[$i]->image_url."' />";
+					}
+				} 
+				else {
+					$output[$i]->image_url = NULL;
+				}     
+				
+                //$output[$i]->image_url = ($output[$i]->image_url != null) ? IPSERVER.$output[$i]->image_url : NULL;
             }
             $response_data = array();
             if ($output != [] && $id != 0) {
@@ -322,7 +345,19 @@ class Product extends My_Controller {
                 $output[$i]->gstore = ($output[$i]->gstore != '1') ? false : true;
                 $output[$i]->chat = ($output[$i]->chat != '1') ? false : true;
                 $output[$i]->email = ($output[$i]->email != '1') ? false : true;
-                $output[$i]->image_url = ($output[$i]->image_url != null) ? IPSERVER.$output[$i]->image_url : NULL;
+                //$output[$i]->image_url = ($output[$i]->image_url != null) ? IPSERVER.$output[$i]->image_url : NULL;
+				
+				if($output[$i]->image_url != null){
+					if (isset($q_strings['id'])) {
+						$output[$i]->image_url = IPSERVER.$output[$i]->image_url;
+					} 
+					else {
+						$output[$i]->image_url = "<img class='object-scale-down w-24 h-14' src='".IPSERVER.$output[$i]->image_url."' />";
+					}
+				} 
+				else {
+					$output[$i]->image_url = NULL;
+				}    
 
                 if (isset($q_strings['id'])) {
                     $product_images = array();

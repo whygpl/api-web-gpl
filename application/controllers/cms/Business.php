@@ -509,8 +509,8 @@ class Business extends My_Controller {
                         'paraghraph_1_en' => $dt_post["paraghraph_1_en"],
                         'paraghraph_2_en' => $dt_post["paraghraph_2_en"],
                         'paraghraph_3_en' => $dt_post["paraghraph_3_en"],
-                        'contact' => $dt_post["contact"] ?? null,
-                        'contact_en' => $dt_post["contact_en"] ?? null,
+                        'contact' => $dt_post["contact"],
+                        'contact_en' => $dt_post["contact_en"],
                         'updated_at' => date('Y-m-d H:i:s')
                     );
 
@@ -547,8 +547,8 @@ class Business extends My_Controller {
                         'par_list_3' => $this->tojson_form($dt_post["par_list_3"]),
                         'par_list_2_en' => $this->tojson($dt_post["par_list_2_en"]),
                         'par_list_3_en' => $this->tojson_form($dt_post["par_list_3_en"]),
-                        'contact' => $dt_post["manufacture_contact"] ?? null,
-                        'contact_en' => $dt_post["manufacture_contact_en"] ?? null,
+                        'contact' => $dt_post["manufacture_contact"],
+                        'contact_en' => $dt_post["manufacture_contact_en"],
                         'updated_at' => date('Y-m-d H:i:s')
                     );
                     $dataToDbManufacture = array_merge($dataToDbManufacture,$dataToDbImageManufac);

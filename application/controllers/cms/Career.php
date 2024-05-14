@@ -154,7 +154,7 @@ class Career extends My_Controller {
             for ($h=0; $h < count($output); $h++) {
                 $output[$h]->join_name = $this->Career_join->read($output[$h]->join_id)[0]->title;
 				$output[$h]->id = $h+1;
-				$output[$h]->photo = "<a href='".IPSERVER.$output[$h]->photo."' target='_blank'><img class='h-48 w-96' src='".IPSERVER.$output[$h]->photo."' /></a>";
+				$output[$h]->photo = "<a href='".IPSERVER.$output[$h]->photo."' target='_blank'><img src='".IPSERVER.$output[$h]->photo."' /></a>";
                 $output[$h]->cv = "<a href='".IPSERVER.$output[$h]->cv."' target='_blank'>download</a>";
 			}
 			
