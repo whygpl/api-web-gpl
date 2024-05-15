@@ -135,11 +135,18 @@ class Users extends My_Controller {
 
             $this->response($message, REST_Controller::HTTP_NOT_FOUND);
         } else {
+			if(empty($this->input->post('role',TRUE))){
+				$roles = 'admin';
+			}
+			else{
+				$roles = $this->input->post('role',TRUE);
+			}
+			
             $insert_data = [
                 'fullname' => $this->input->post('fullname', TRUE),
                 'email' => $this->input->post('email', TRUE),
                 'password' => password_hash($this->input->post('password', TRUE), PASSWORD_DEFAULT),
-                'role' => $this->input->post('role',TRUE) ?? 'admin',
+                'role' => $roles,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ];
